@@ -1,0 +1,3 @@
+tap_install:
+  package_repository:
+    oci_repository: 072698587737.dkr.ecr.us-east-1.amazonaws.com/tap-images/tap-packages

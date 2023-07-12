@@ -1,0 +1,12 @@
+---
+tap_install:
+  secrets:
+    eso:
+      aws:
+        region: us-east-1
+        tap_install_secrets:
+          role_arn: arn:aws:iam::072698587737:role/tapme-build--tap-install-secrets
+      remote_refs:
+        tap_sensitive_values:
+          sensitive_tap_values_yaml:
+            key: dev/tapme-build/tap/sensitive-values.yaml
