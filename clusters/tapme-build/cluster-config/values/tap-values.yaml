@@ -1,0 +1,89 @@
+tap_install:
+  values:
+    # Tanzu Application Platform values go here
+    shared:
+      ingress_domain: "tapmedas.com"
+      ingress_issuer: "letsencrypt-prod"
+      image_registry:
+        project_path: "072698587737.dkr.ecr.us-east-1.amazonaws.com/tap-images"
+    ceip_policy_disclosed: true # Installation fails if this is not set to true. Not a string.
+    profile: full # Can take iterate, build, run, view.
+
+    excluded_packages:
+      - learningcenter.tanzu.vmware.com
+      - workshops.learningcenter.tanzu.vmware.com
+      - tap-telemetry.tanzu.vmware.com
+      - contour.tanzu.vmware.com
+      - cert-manager.tanzu.vmware.com
+    namespace_provisioner:
+      controller: true
+      default_parameters:
+        limits:
+          default:
+            cpu: 1.7
+            memory: 1Gi
+          defaultRequest:
+            cpu: 100m
+            memory: 1Gi    
+
+    supply_chain: testing_scanning # Can take testing, testing_scanning.
+    ootb_supply_chain_testing_scanning:
+      registry:
+        server: "072698587737.dkr.ecr.us-east-1.amazonaws.com"
+        repository: "tanzu-application-platform"
+      gitops:
+        ssh_secret: "-----BEGIN OPENSSH PRIVATE KEY-----\n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\n-----END OPENSSH PRIVATE KEY-----\n"
+    contour:
+      envoy:
+        service:
+          type: LoadBalancer
+
+    buildservice:
+      # Takes the value from the shared section by default, but can be overridden by setting a different value.
+      kp_default_repository: "072698587737.dkr.ecr.us-east-1.amazonaws.com/tap-build-service"
+      kp_default_repository_aws_iam_role_arn: arn:aws:iam::072698587737:role/tap-build-service
+    ootb_templates:
+      # Enable the config writer service to use cloud based iaas authentication
+      # which are retrieved from the developer namespace service account by
+      # default
+      iaas_auth: false
+    tap_gui:
+    #  tls:
+    #    namespace: tap-gui
+    #    secretName: tap-gui-cert
+      metadataStoreAutoconfiguration: true # Creates a service account, the Kubernetes control plane token and the requisite app_config block to enable communications between Tanzu Application Platform GUI and SCST - Store.
+      ingressEnabled: "true"
+      ingressDomain: "tapmedas.com"
+      app_config:
+        app:
+          baseUrl: https://tap-gui.tapmedas.com
+        catalog:
+          locations:
+            - type: url
+              target: https://github.com/sample-accelerators/tanzu-java-web-app/blob/main/catalog/catalog-info.yaml
+        backend:
+          baseUrl: https://tap-gui.tapmedas.com
+          cors:
+            origin: https://tap-gui.tapmedas.com
+
+    metadata_store:
+      ingress_enabled: "true"
+      ns_for_export_app_cert: "*" # Verify this namespace is available within your cluster before initiating the Tanzu Application Platform installation.
+      app_service_type: ClusterIP # Defaults to LoadBalancer. If shared.ingress_domain is set earlier, this must be set to ClusterIP.
+
+    scanning:
+      metadataStore:
+        url: "" # Configuration is moved, so set this string to empty.
+
+    grype:
+      namespace: "dev" # Verify this namespace is available within your cluster before initiating the Tanzu Application Platform installation.
+      targetImagePullSecret: "registry-credentials"
+      # In a single cluster, the connection between the scanning pod and the metadata store happens inside the cluster and does not pass through ingress. This is automatically configured, you do not need to provide an ingress connection to the store.
+      metadataStore:
+        url: https://metadata-store.tapmedas.com
+        caSecret:
+          name: store-ca-cert
+          importFromNamespace: metadata-store-secrets
+    policy:
+      tuf_enabled: false # By default, TUF initialization and keyless verification are deactivated.
+
